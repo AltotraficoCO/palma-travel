@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Palma Travel - Altotrafico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-principal: #183738;
+            --color-beige: #e0dbc8;
+            --color-amarillo: #d8da00;
+            --color-azul: #a2c1c4;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-principal);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-principal) 0%, #0d2324 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--color-amarillo);
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.15;
+            top: -300px;
+            right: -300px;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--color-azul);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+            50% { transform: translateY(-40px) translateX(40px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+            filter: drop-shadow(0 4px 20px rgba(216, 218, 0, 0.3));
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 800;
+            color: var(--color-beige);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--color-amarillo);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero .client {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            color: var(--color-beige);
+            font-weight: 700;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            letter-spacing: 2px;
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 3rem;
+            border: 8px solid var(--color-amarillo);
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        .scroll-indicator svg {
+            fill: var(--color-amarillo);
+            filter: drop-shadow(0 2px 10px rgba(216, 218, 0, 0.5));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.15);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-amarillo), var(--color-azul));
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--color-principal);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--color-amarillo);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--color-amarillo) 0%, var(--color-azul) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--color-amarillo);
+            box-shadow: 0 30px 60px rgba(216, 218, 0, 0.25);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--color-amarillo);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            color: var(--color-principal);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-amarillo), var(--color-azul));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1.5rem 0;
+        }
+
+        .service-price span {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-amarillo);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .service-note {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #999;
+            font-style: italic;
+            padding: 1rem;
+            background: rgba(216, 218, 0, 0.05);
+            border-radius: 12px;
+            border-left: 3px solid var(--color-amarillo);
+        }
+
+        .calculator {
+            background: linear-gradient(135deg, var(--color-principal) 0%, #0d2324 100%);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            color: white;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--color-amarillo);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+        }
+
+        .calculator > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--color-amarillo);
+            font-weight: 800;
+        }
+
+        .calculator-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-beige);
+            font-size: 1.15rem;
+        }
+
+        .slider-container {
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .slider {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.15);
+            outline: none;
+            -webkit-appearance: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--color-amarillo);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(216, 218, 0, 0.5);
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+            box-shadow: 0 6px 30px rgba(216, 218, 0, 0.7);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--color-amarillo);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 20px rgba(216, 218, 0, 0.5);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 15px 40px rgba(216, 218, 0, 0.2);
+        }
+
+        .result-label {
+            font-size: 0.95rem;
+            color: var(--color-beige);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-amarillo);
+            text-shadow: 0 2px 10px rgba(216, 218, 0, 0.3);
+        }
+
+        .commission-breakdown {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .breakdown-title {
+            margin-bottom: 1.5rem;
+            color: var(--color-amarillo);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-size: 1.05rem;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: var(--color-amarillo);
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(216, 218, 0, 0.3);
+        }
+
+        .pricing-table {
+            overflow-x: auto;
+            margin-top: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 1.5rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--color-principal);
+            color: var(--color-beige);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(216, 218, 0, 0.08);
+            transform: scale(1.01);
+        }
+
+        td:last-child {
+            font-weight: 700;
+            color: var(--color-principal);
+            font-size: 1.1rem;
+        }
+
+        .investment-section {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .investment-section h3 {
+            color: var(--color-principal);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .investment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .investment-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        .investment-item strong {
+            color: var(--color-amarillo);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .investment-total {
+            background: var(--color-principal);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        .investment-total strong {
+            color: var(--color-amarillo);
+            font-size: 1.5rem;
+        }
+
+        .investment-highlight {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--color-amarillo);
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .investment-highlight h4 {
+            color: var(--color-principal);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .investment-example {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .investment-example strong {
+            color: var(--color-principal);
+            font-size: 1.1rem;
+        }
+
+        .investment-example-total {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--color-amarillo);
+            margin-top: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 5rem 3rem;
+            background: linear-gradient(135deg, var(--color-principal) 0%, #0d2324 100%);
+            border-radius: 30px;
+            margin-top: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--color-amarillo);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--color-amarillo);
+            font-weight: 800;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+
+        .cta-column h3 {
+            color: var(--color-amarillo);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .cta-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cta-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .cta-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-amarillo);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .cta-final {
+            margin-top: 4rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-amarillo);
+            text-shadow: 0 4px 20px rgba(216, 218, 0, 0.3);
+        }
+
+        .team-photo {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            margin: 3rem auto;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--color-beige);
+            background: var(--color-principal);
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer p {
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-highlight {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 2.5rem 2rem;
+            }
+
+            .calculator {
+                padding: 2.5rem 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .logo {
+                width: 140px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="images/logo.png" alt="Altotrafico Logo" class="logo">
+            <h1>PROPUESTA COMERCIAL</h1>
+            <div class="subtitle">Partnership Estratégico</div>
+            <div class="client">PALMA TRAVEL</div>
+            <img src="images/hero-person.jpg" alt="Team Member" class="hero-image">
+        </div>
+        <div class="scroll-indicator" onclick="smoothScroll()">
+            <svg width="40" height="40" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section fade-in">
+            <h2 class="section-title">Servicios Incluidos</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/dev-person.jpg" alt="Desarrollo Web" class="service-icon">
+                    <h3>🌐 Desarrollo y Admin Web</h3>
+                    <div class="service-price">$750,000<span>/mes</span></div>
+                    <ul class="service-features">
+                        <li>Mantenimiento del sitio actual</li>
+                        <li>Mejoras y optimizaciones continuas</li>
+                        <li>Desarrollo progresivo del SaaS</li>
+                        <li>Hosting y dominio gestionado</li>
+                        <li>Soporte técnico dedicado</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/pauta-person.jpg" alt="Pauta Digital" class="service-icon">
+                    <h3>📱 Pauta Digital</h3>
+                    <div class="service-price">$650,000<span>/mes</span></div>
+                    <ul class="service-features">
+                        <li>Google Ads + Meta Ads</li>
+                        <li>8-10 creatividades mensuales</li>
+                        <li>Optimización semanal</li>
+                        <li>Reportes mensuales detallados</li>
+                        <li>Estrategia personalizada</li>
+                    </ul>
+                    <p class="service-note">
+                        *Presupuesto de pauta no incluido (mínimo sugerido: $2,000,000/mes)
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/msg-person.jpg" alt="Mensajería Masiva" class="service-icon">
+                    <h3>💬 Mensajería Masiva</h3>
+                    <div class="service-price">$450,000<span>/mes</span></div>
+                    <ul class="service-features">
+                        <li>Email + WhatsApp API</li>
+                        <li>Automatizaciones inteligentes</li>
+                        <li>Campañas promocionales</li>
+                        <li>Recordatorios de reserva</li>
+                        <li>Hasta 5,000 mensajes/mes</li>
+                    </ul>
+                    <p class="service-note">
+                        *Servicios de terceros: ~$350,000/mes (email/WhatsApp)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="calculator fade-in">
+            <h2 class="calculator-title">🧮 Calculadora Interactiva</h2>
+            <p class="calculator-subtitle">
+                Mueve el slider para ver cómo funciona nuestro modelo de comisión en tiempo real
+            </p>
+
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Facturación mensual de Palma Travel:</span>
+                    <span id="revenue-display" style="color: var(--color-amarillo); font-weight: 800;">$30,000,000</span>
+                </div>
+                <input type="range" min="10000000" max="100000000" value="30000000" step="5000000" class="slider" id="revenue-slider">
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-label">Fee Fijo</div>
+                    <div class="result-value">$1.85M</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">% Comisión</div>
+                    <div class="result-value" id="commission-percent">4.0%</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">Comisión</div>
+                    <div class="result-value" id="commission-amount">$1.2M</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">Total Mensual</div>
+                    <div class="result-value" id="total-monthly">$3.05M</div>
+                </div>
+            </div>
+
+            <div class="commission-breakdown">
+                <h3 class="breakdown-title">Desglose de Comisión</h3>
+                <div class="breakdown-item">
+                    <span>Servicio Principal (Desarrollo Web)</span>
+                    <span>3.0%</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>+ Pauta Digital</span>
+                    <span>+0.5%</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>+ Mensajería Masiva</span>
+                    <span>+0.5%</span>
+                </div>
+                <div class="breakdown-item">
+                    <span>TOTAL</span>
+                    <span>4.0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2 class="section-title">Simulación de Escenarios</h2>
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Facturación Mensual</th>
+                            <th>Fee Fijo</th>
+                            <th>Comisión (4%)</th>
+                            <th>Total Mensual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$15,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$600,000</td>
+                            <td>$2,450,000</td>
+                        </tr>
+                        <tr>
+                            <td>$20,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$800,000</td>
+                            <td>$2,650,000</td>
+                        </tr>
+                        <tr>
+                            <td>$30,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$1,200,000</td>
+                            <td>$3,050,000</td>
+                        </tr>
+                        <tr>
+                            <td>$40,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$1,600,000</td>
+                            <td>$3,450,000</td>
+                        </tr>
+                        <tr>
+                            <td>$50,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$2,000,000</td>
+                            <td>$3,850,000</td>
+                        </tr>
+                        <tr>
+                            <td>$60,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$2,400,000</td>
+                            <td>$4,250,000</td>
+                        </tr>
+                        <tr>
+                            <td>$80,000,000</td>
+                            <td>$1,850,000</td>
+                            <td>$3,200,000</td>
+                            <td>$5,050,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2 class="section-title">Inversión de Palma Travel</h2>
+            <div class="investment-section">
+                <h3>Costos Mensuales Fijos:</h3>
+                <div style="display: grid; gap: 1.25rem;">
+                    <div class="investment-item">
+                        <span>Fees a Altotrafico</span>
+                        <strong>$1,850,000</strong>
+                    </div>
+                    <div class="investment-item">
+                        <span>Presupuesto de pauta (mínimo sugerido)</span>
+                        <strong>$2,000,000</strong>
+                    </div>
+                    <div class="investment-item">
+                        <span>Servicios de terceros (email/WhatsApp)</span>
+                        <strong>$350,000</strong>
+                    </div>
+                    <div class="investment-total">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>SUBTOTAL FIJO</span>
+                            <strong>$4,200,000/mes</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-highlight">
+                    <h4>+ Comisión Variable</h4>
+                    <p style="font-size: 1.15rem; color: #666; margin-bottom: 1.5rem;">
+                        4.0% sobre ventas brutas mensuales
+                    </p>
+                    
+                    <div class="investment-example">
+                        <strong>Ejemplo con $30,000,000 de facturación mensual:</strong>
+                        <div style="margin-top: 1rem; line-height: 2;">
+                            <div>• Inversión fija: $4,200,000</div>
+                            <div>• Comisión (4%): $1,200,000</div>
+                            <div class="investment-example-total">
+                                TOTAL: $5,400,000/mes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section fade-in">
+            <h2 class="cta-title">¿Por qué esta alianza?</h2>
+            <div class="cta-grid">
+                <div class="cta-column">
+                    <h3>Palma Travel Recibe</h3>
+                    <ul class="cta-list">
+                        <li>Sitio web administrado y optimizado</li>
+                        <li>Desarrollo progresivo del SaaS</li>
+                        <li>Pauta digital para generar reservas</li>
+                        <li>Mensajería masiva automatizada</li>
+                        <li>Partner tecnológico de largo plazo</li>
+                    </ul>
+                </div>
+                <div class="cta-column">
+                    <h3>Altotrafico Invierte</h3>
+                    <ul class="cta-list">
+                        <li>Tiempo y conocimiento especializado</li>
+                        <li>Desarrollo tecnológico continuo</li>
+                        <li>Gestión profesional de pauta</li>
+                        <li>Partner estratégico de crecimiento</li>
+                        <li>Compromiso con resultados</li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/team-photo.jpg" alt="Equipo Altotrafico" class="team-photo">
+            <div class="cta-final">
+                CRECEMOS JUNTOS 🚀
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <img src="images/logo.png" alt="Altotrafico" class="footer-logo">
+        <p class="footer-highlight">ALTOTRAFICO</p>
+        <p style="color: var(--color-azul);">Agencia de Servicios Digitales | Enero 2026</p>
+    </div>
+
+    <script>
+        // Calculadora interactiva
+        const slider = document.getElementById('revenue-slider');
+        const revenueDisplay = document.getElementById('revenue-display');
+        const commissionAmount = document.getElementById('commission-amount');
+        const totalMonthly = document.getElementById('total-monthly');
+
+        function formatCurrency(amount) {
+            return '$' + (amount / 1000000).toFixed(2) + 'M';
+        }
+
+        function formatLargeCurrency(amount) {
+            return '$' + amount.toLocaleString('es-CO');
+        }
+
+        function updateCalculator() {
+            const revenue = parseInt(slider.value);
+            const fixedFee = 1850000;
+            const commissionRate = 0.04;
+            const commission = revenue * commissionRate;
+            const total = fixedFee + commission;
+
+            revenueDisplay.textContent = formatLargeCurrency(revenue);
+            commissionAmount.textContent = formatCurrency(commission);
+            totalMonthly.textContent = formatCurrency(total);
+        }
+
+        slider.addEventListener('input', updateCalculator);
+        
+        // Smooth scroll
+        function smoothScroll() {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect en hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+            }
+        });
+    </script>
+</body>
+</html>
