@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -39,7 +40,7 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--color-principal) 0%, #0d2324 100%);
+            background: linear-gradient(135deg, #1a3e3f 0%, #0f2b2c 50%, #0a1f20 100%);
         }
 
         .hero::before {
@@ -112,19 +113,108 @@
             color: var(--color-beige);
             font-weight: 700;
             margin-top: 2rem;
+            margin-bottom: 3rem;
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
             letter-spacing: 2px;
         }
 
-        .hero-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 3rem;
-            border: 8px solid var(--color-amarillo);
             animation: fadeInUp 0.8s ease-out 0.8s backwards;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons .btn {
+            flex: 1 1 280px;
+            min-width: 280px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1.2rem 2.8rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-amarillo) 0%, #e6ec00 100%);
+            color: var(--color-principal);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(216, 218, 0, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(216, 218, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(224, 219, 200, 0.1);
+            color: var(--color-beige);
+            border: 2px solid var(--color-beige);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-beige);
+            color: var(--color-principal);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(224, 219, 200, 0.3);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #1fb855 100%);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         @keyframes fadeInUp {
@@ -232,6 +322,10 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .service-card::before {
@@ -297,6 +391,8 @@
         .service-features {
             list-style: none;
             padding: 0;
+            width: 100%;
+            text-align: left;
         }
 
         .service-features li {
@@ -325,6 +421,106 @@
             background: rgba(216, 218, 0, 0.05);
             border-radius: 12px;
             border-left: 3px solid var(--color-amarillo);
+        }
+
+        .service-details {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .detail-toggle {
+            background: var(--color-beige);
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-principal);
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+
+        .detail-toggle:hover {
+            background: #d5d0ba;
+        }
+
+        .detail-toggle .icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .detail-toggle.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .detail-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .detail-content.active {
+            max-height: 800px;
+            padding: 1.25rem;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-content li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .detail-content li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-content .check-icon {
+            color: #22c55e;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .detail-content .cross-icon {
+            color: #ef4444;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .detail-section {
+            margin-bottom: 1rem;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h4 {
+            font-size: 1rem;
+            color: var(--color-principal);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
         }
 
         .calculator {
@@ -368,6 +564,66 @@
             margin-bottom: 3rem;
             color: var(--color-beige);
             font-size: 1.15rem;
+        }
+
+        .services-selector {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-checkbox:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateX(10px);
+        }
+
+        .service-checkbox.selected {
+            background: rgba(216, 218, 0, 0.15);
+            border-color: var(--color-amarillo);
+        }
+
+        .service-checkbox input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-right: 1.5rem;
+            cursor: pointer;
+            accent-color: var(--color-amarillo);
+        }
+
+        .service-checkbox-content {
+            flex: 1;
+        }
+
+        .service-checkbox-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-amarillo);
+        }
+
+        .service-checkbox-price {
+            font-size: 1.1rem;
+            color: var(--color-beige);
+        }
+
+        .service-checkbox-commission {
+            font-size: 0.95rem;
+            color: var(--color-azul);
+            margin-top: 0.25rem;
         }
 
         .slider-container {
@@ -492,6 +748,29 @@
             border-top: 2px solid rgba(216, 218, 0, 0.3);
         }
 
+        .download-pdf-btn {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--color-amarillo);
+            color: var(--color-principal);
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .download-pdf-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(216, 218, 0, 0.4);
+        }
+
         .pricing-table {
             overflow-x: auto;
             margin-top: 2rem;
@@ -533,92 +812,6 @@
             font-weight: 700;
             color: var(--color-principal);
             font-size: 1.1rem;
-        }
-
-        .investment-section {
-            padding: 2.5rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-radius: 20px;
-            margin-top: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .investment-section h3 {
-            color: var(--color-principal);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .investment-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 1.25rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .investment-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-        }
-
-        .investment-item strong {
-            color: var(--color-amarillo);
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-
-        .investment-total {
-            background: var(--color-principal);
-            color: white;
-            padding: 2rem;
-            border-radius: 16px;
-            font-size: 1.3rem;
-            margin-top: 1rem;
-        }
-
-        .investment-total strong {
-            color: var(--color-amarillo);
-            font-size: 1.5rem;
-        }
-
-        .investment-highlight {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            border-left: 6px solid var(--color-amarillo);
-            margin-top: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        .investment-highlight h4 {
-            color: var(--color-principal);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .investment-example {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-        }
-
-        .investment-example strong {
-            color: var(--color-principal);
-            font-size: 1.1rem;
-        }
-
-        .investment-example-total {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--color-amarillo);
-            margin-top: 1rem;
         }
 
         .cta-section {
@@ -754,13 +947,17 @@
                 gap: 3rem;
             }
 
-            .hero-image {
-                width: 200px;
-                height: 200px;
-            }
-
             .logo {
                 width: 140px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -774,18 +971,215 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .intro-section {
+            background: linear-gradient(135deg, var(--color-amarillo) 0%, #f0f000 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(216, 218, 0, 0.3);
+        }
+
+        .intro-section h2 {
+            font-size: 2.5rem;
+            color: var(--color-principal);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            color: var(--color-principal);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .intro-highlight {
+            background: var(--color-principal);
+            color: var(--color-amarillo);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+
+        .intro-highlight h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-beige);
+        }
+
+        .intro-bullets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .intro-bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .intro-bullet-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .intro-bullet-text {
+            flex: 1;
+        }
+
+        .intro-bullet h4 {
+            font-size: 1.1rem;
+            color: var(--color-amarillo);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .intro-bullet p {
+            font-size: 1rem;
+            color: var(--color-beige);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .success-cases {
+            background: white;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.15);
+        }
+
+        .success-cases h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-principal);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .success-cases-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-item {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .logo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--color-amarillo);
+        }
+
+        .logo-item img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .logo-item h4 {
+            font-size: 1rem;
+            color: var(--color-principal);
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .logo-item p {
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .logo-item a {
+            color: var(--color-azul);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .logo-item a:hover {
+            color: var(--color-amarillo);
+        }
+
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-principal) 0%, #0d2324 100%);
+            border-radius: 20px;
+        }
+
+        .case-stat {
+            text-align: center;
+            color: white;
+        }
+
+        .case-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-amarillo);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-stat-label {
+            font-size: 1rem;
+            color: var(--color-beige);
+        }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="hero-content">
             <img src="images/logo.png" alt="Altotrafico Logo" class="logo">
-            <h1>PROPUESTA COMERCIAL...git commit </h1>
+            <h1>PROPUESTA COMERCIAL</h1>
             <div class="subtitle">Partnership Estratégico</div>
             <div class="client">PALMA TRAVEL</div>
-            <img src="images/hero-person.jpg" alt="Team Member" class="hero-image">
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/573045248141?text=Hola!%20Me%20interesa%20la%20propuesta%20de%20Altotrafico" class="btn btn-whatsapp" target="_blank">
+                    📱 WhatsApp
+                </a>
+                <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
+                    📦 Ver Planes
+                </a>
+                <button class="btn btn-secondary" onclick="downloadMainPDF()">
+                    📄 Descargar PDF
+                </button>
+            </div>
         </div>
-        <div class="scroll-indicator" onclick="smoothScroll()">
+        <div class="scroll-indicator" onclick="smoothScroll(event, '.container')">
             <svg width="40" height="40" viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5z"/>
             </svg>
@@ -793,8 +1187,61 @@
     </div>
 
     <div class="container">
-        <div class="section fade-in">
-            <h2 class="section-title">Servicios Incluidos</h2>
+        <div class="intro-section fade-in">
+            <h2>¿Cómo Funciona Este Partnership? 🤝</h2>
+            <p>
+                Esta propuesta está diseñada para que Palma Travel y Altotrafico crezcan juntos. 
+                <strong>No es un gasto, es una inversión compartida</strong> donde ambos ganamos cuando tu negocio crece.
+            </p>
+            
+            <div class="intro-highlight">
+                <h3>📊 Modelo de Inversión Compartida</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    En lugar de cobrar tarifas altas fijas, invertimos tiempo y recursos en tu éxito. 
+                    <strong>Mientras más vendas, más ganamos ambos.</strong>
+                </p>
+                
+                <div class="intro-bullets">
+                    <div class="intro-bullet">
+                        <div class="intro-bullet-icon">💰</div>
+                        <div class="intro-bullet-text">
+                            <h4>Fee Mensual Bajo</h4>
+                            <p>Cubrimos costos operativos básicos con un fee fijo accesible por servicio</p>
+                        </div>
+                    </div>
+                    
+                    <div class="intro-bullet">
+                        <div class="intro-bullet-icon">📈</div>
+                        <div class="intro-bullet-text">
+                            <h4>Comisión por Resultados</h4>
+                            <p>Solo ganamos más cuando TÚ vendes más - alineamos nuestros incentivos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="intro-bullet">
+                        <div class="intro-bullet-icon">🎯</div>
+                        <div class="intro-bullet-text">
+                            <h4>Sin Riesgo Alto</h4>
+                            <p>No pagas tarifas de agencia tradicional (que pueden ser $3M-$5M/mes)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="intro-bullet">
+                        <div class="intro-bullet-icon">🚀</div>
+                        <div class="intro-bullet-text">
+                            <h4>Enfoque en Crecimiento</h4>
+                            <p>Nuestro éxito depende de tu éxito - máxima motivación para obtener resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in" id="servicios">
+            <h2 class="section-title">Servicios Disponibles</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Selecciona los servicios que necesitas. <strong>El primer servicio tiene una comisión del 3%</strong> y cada servicio adicional agrega solo 0.5% más. Puedes contratar uno, dos o los tres según tus necesidades.
+            </p>
             <div class="services-grid">
                 <div class="service-card">
                     <img src="images/dev-person.jpg" alt="Desarrollo Web" class="service-icon">
@@ -807,12 +1254,53 @@
                         <li>Hosting y dominio gestionado</li>
                         <li>Soporte técnico dedicado</li>
                     </ul>
+                    
+                    <div class="service-details">
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✓ Qué incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="check-icon">✓</span> <span>Actualizaciones de contenido ilimitadas</span></li>
+                                <li><span class="check-icon">✓</span> <span>Optimización SEO técnico y de velocidad</span></li>
+                                <li><span class="check-icon">✓</span> <span>Certificado SSL y seguridad web</span></li>
+                                <li><span class="check-icon">✓</span> <span>Copias de seguridad semanales automáticas</span></li>
+                                <li><span class="check-icon">✓</span> <span>Desarrollo de nuevas funcionalidades del SaaS</span></li>
+                                <li><span class="check-icon">✓</span> <span>Integración con sistemas de pago</span></li>
+                                <li><span class="check-icon">✓</span> <span>Dashboard administrativo personalizado</span></li>
+                                <li><span class="check-icon">✓</span> <span>Soporte técnico prioritario 5 días/semana</span></li>
+                            </ul>
+                        </div>
+
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✗ Qué NO incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="cross-icon">✗</span> <span>Rediseño completo del sitio web (cotización aparte)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Producción de fotografía o video profesional</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido (textos, blogs)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Gestión de redes sociales</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Apps móviles nativas (iOS/Android)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Servicios de email o WhatsApp API</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.5rem; color: var(--color-amarillo); font-weight: 700;">
+                        + 0.5% adicional de comisión
+                    </p>
                 </div>
 
                 <div class="service-card">
                     <img src="images/pauta-person.jpg" alt="Pauta Digital" class="service-icon">
                     <h3>📱 Pauta Digital</h3>
                     <div class="service-price">$650,000<span>/mes</span></div>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-style: italic;">
+                        *Precio variable según inversión en pauta
+                    </p>
                     <ul class="service-features">
                         <li>Google Ads + Meta Ads</li>
                         <li>8-10 creatividades mensuales</li>
@@ -820,8 +1308,46 @@
                         <li>Reportes mensuales detallados</li>
                         <li>Estrategia personalizada</li>
                     </ul>
+
+                    <div class="service-details">
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✓ Qué incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="check-icon">✓</span> <span>Gestión completa de Google Ads y Meta Ads</span></li>
+                                <li><span class="check-icon">✓</span> <span>Investigación de palabras clave y audiencias</span></li>
+                                <li><span class="check-icon">✓</span> <span>8-10 creatividades (imágenes/videos cortos) por mes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Optimización semanal de campañas</span></li>
+                                <li><span class="check-icon">✓</span> <span>A/B testing de anuncios y audiencias</span></li>
+                                <li><span class="check-icon">✓</span> <span>Reportes mensuales con análisis detallado</span></li>
+                                <li><span class="check-icon">✓</span> <span>Configuración de píxeles y conversiones</span></li>
+                                <li><span class="check-icon">✓</span> <span>Estrategia y planificación mensual</span></li>
+                            </ul>
+                        </div>
+
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✗ Qué NO incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="cross-icon">✗</span> <span>Presupuesto de pauta (mínimo sugerido: $650,000/mes)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Producción profesional de video (sobre 30 segundos)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Sesiones fotográficas profesionales</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Community management de redes sociales</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Pauta en TikTok Ads (cotización aparte)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Influencer marketing o partnerships</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <p class="service-note">
-                        *Presupuesto de pauta no incluido (mínimo sugerido: $2,000,000/mes)
+                        *Presupuesto de pauta no incluido (mínimo sugerido: $650,000/mes)
+                    </p>
+                    <p style="margin-top: 1rem; color: var(--color-amarillo); font-weight: 700;">
+                        + 0.5% adicional de comisión
                     </p>
                 </div>
 
@@ -836,9 +1362,110 @@
                         <li>Recordatorios de reserva</li>
                         <li>Hasta 5,000 mensajes/mes</li>
                     </ul>
+
+                    <div class="service-details">
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✓ Qué incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="check-icon">✓</span> <span>Configuración de WhatsApp Business API</span></li>
+                                <li><span class="check-icon">✓</span> <span>Configuración de plataforma de email marketing</span></li>
+                                <li><span class="check-icon">✓</span> <span>Hasta 5,000 mensajes combinados por mes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Automatizaciones de seguimiento post-reserva</span></li>
+                                <li><span class="check-icon">✓</span> <span>Recordatorios automáticos de viajes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Campañas promocionales segmentadas</span></li>
+                                <li><span class="check-icon">✓</span> <span>Diseño de plantillas de mensajes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Reportes de entregas y engagement</span></li>
+                            </ul>
+                        </div>
+
+                        <button class="detail-toggle" onclick="toggleDetail(this)">
+                            <span>✗ Qué NO incluye</span>
+                            <span class="icon">▼</span>
+                        </button>
+                        <div class="detail-content">
+                            <ul>
+                                <li><span class="cross-icon">✗</span> <span>Costos de servicios de terceros (~$350,000/mes para email y WhatsApp)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Mensajes adicionales sobre el límite de 5,000</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Atención al cliente 24/7 por WhatsApp</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Chatbot con inteligencia artificial conversacional</span></li>
+                                <li><span class="cross-icon">✗</span> <span>SMS masivos (solo email y WhatsApp)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido para campañas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <p class="service-note">
                         *Servicios de terceros: ~$350,000/mes (email/WhatsApp)
                     </p>
+                    <p style="margin-top: 1rem; color: var(--color-amarillo); font-weight: 700;">
+                        + 0.5% adicional de comisión
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-cases fade-in">
+            <h2>Casos de Éxito 🏆</h2>
+            <p class="success-cases-subtitle">
+                Empresas que confían en Altotrafico para su transformación digital
+            </p>
+            
+            <div class="logos-grid">
+                <div class="logo-item">
+                    <img src="https://upequipmentusa.com/wp-content/uploads/2023/06/cropped-UP-EQUIPMENT-USA-LOGO-VECTOR.png" alt="UP Equipment USA">
+                    <h4>UP Equipment USA</h4>
+                    <p>Maquinaria Pesada</p>
+                    <a href="https://upequipmentusa.com/" target="_blank">upequipmentusa.com →</a>
+                </div>
+                
+                <div class="logo-item">
+                    <img src="https://www.solucioneslegales.net.co/wp-content/uploads/2024/01/logo-soluciones-legales-negro.svg" alt="Soluciones Legales">
+                    <h4>Soluciones Legales</h4>
+                    <p>Servicios Jurídicos</p>
+                    <a href="https://www.solucioneslegales.net.co/" target="_blank">solucioneslegales.net.co →</a>
+                </div>
+                
+                <div class="logo-item">
+                    <img src="https://coros.com.co/wp-content/uploads/2024/08/Copia-de-Diseno-sin-titulo-46.png" alt="COROS Colombia">
+                    <h4>COROS Colombia</h4>
+                    <p>Relojes Deportivos</p>
+                    <a href="https://coros.com.co/" target="_blank">coros.com.co →</a>
+                </div>
+                
+                <div class="logo-item">
+                    <img src="https://s3.amazonaws.com/alegra.com/styles/v2/logo_header_v2.svg" alt="Alegra">
+                    <h4>Alegra</h4>
+                    <p>Software Contable</p>
+                    <a href="https://app.alegra.com/" target="_blank">alegra.com →</a>
+                </div>
+                
+                <div class="logo-item">
+                    <img src="https://gruasyequipos.net/wp-content/uploads/2024/06/Logo_Mesa-de-trabajo-1-1024x388.png" alt="Grúas y Equipos">
+                    <h4>Grúas y Equipos</h4>
+                    <p>Maquinaria Industrial</p>
+                    <a href="https://gruasyequipos.net/" target="_blank">gruasyequipos.net →</a>
+                </div>
+            </div>
+
+            <div class="case-stats">
+                <div class="case-stat">
+                    <div class="case-stat-number">17+</div>
+                    <div class="case-stat-label">Años de Experiencia</div>
+                </div>
+                <div class="case-stat">
+                    <div class="case-stat-number">150+</div>
+                    <div class="case-stat-label">Proyectos Entregados</div>
+                </div>
+                <div class="case-stat">
+                    <div class="case-stat-number">$3M+</div>
+                    <div class="case-stat-label">USD en Pauta Gestionada</div>
+                </div>
+                <div class="case-stat">
+                    <div class="case-stat-number">100%</div>
+                    <div class="case-stat-label">Satisfacción de Clientes</div>
                 </div>
             </div>
         </div>
@@ -846,159 +1473,100 @@
         <div class="calculator fade-in">
             <h2 class="calculator-title">🧮 Calculadora Interactiva</h2>
             <p class="calculator-subtitle">
-                Mueve el slider para ver cómo funciona nuestro modelo de comisión en tiempo real
+                Selecciona los servicios que necesitas y ajusta tu facturación mensual estimada para ver cuánto pagarías
             </p>
+            <p class="calculator-subtitle" style="margin-top: 1rem; font-size: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--color-amarillo);">
+                <strong>💡 Cómo leer los resultados:</strong><br>
+                • <strong>Fee Fijo</strong> = Lo que pagas mensualmente por cada servicio<br>
+                • <strong>Comisión</strong> = Porcentaje sobre tus ventas mensuales<br>
+                • <strong>Total Mensual</strong> = Fee Fijo + Comisión = Tu inversión total
+            </p>
+
+            <div class="services-selector">
+                <h3 style="color: var(--color-amarillo); margin-bottom: 1rem; font-size: 1.5rem;">Selecciona tus servicios:</h3>
+                <p style="color: var(--color-beige); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+                    ℹ️ <strong>El primer servicio que selecciones</strong> tendrá una comisión del 3% sobre tus ventas.<br>
+                    Cada servicio adicional solo agrega 0.5% más. Ejemplo: 2 servicios = 3.5% total.
+                </p>
+                
+                <label class="service-checkbox" id="checkbox-dev">
+                    <input type="checkbox" id="service-dev" onchange="updateCalculator()" checked>
+                    <div class="service-checkbox-content">
+                        <div class="service-checkbox-title">🌐 Desarrollo y Admin Web</div>
+                        <div class="service-checkbox-price">$750,000/mes</div>
+                        <div class="service-checkbox-commission">Primer servicio: 3% | Adicional: +0.5%</div>
+                    </div>
+                </label>
+
+                <label class="service-checkbox" id="checkbox-pauta">
+                    <input type="checkbox" id="service-pauta" onchange="updateCalculator()">
+                    <div class="service-checkbox-content">
+                        <div class="service-checkbox-title">📱 Pauta Digital</div>
+                        <div class="service-checkbox-price">$650,000/mes (precio variable)</div>
+                        <div class="service-checkbox-commission">Primer servicio: 3% | Adicional: +0.5%</div>
+                    </div>
+                </label>
+
+                <label class="service-checkbox" id="checkbox-msg">
+                    <input type="checkbox" id="service-msg" onchange="updateCalculator()">
+                    <div class="service-checkbox-content">
+                        <div class="service-checkbox-title">💬 Mensajería Masiva</div>
+                        <div class="service-checkbox-price">$450,000/mes</div>
+                        <div class="service-checkbox-commission">Primer servicio: 3% | Adicional: +0.5%</div>
+                    </div>
+                </label>
+            </div>
 
             <div class="slider-container">
                 <div class="slider-label">
                     <span>Facturación mensual de Palma Travel:</span>
                     <span id="revenue-display" style="color: var(--color-amarillo); font-weight: 800;">$30,000,000</span>
                 </div>
-                <input type="range" min="10000000" max="100000000" value="30000000" step="5000000" class="slider" id="revenue-slider">
+                <input type="range" min="10000000" max="100000000" value="30000000" step="5000000" class="slider" id="revenue-slider" oninput="updateCalculator()">
             </div>
 
             <div class="results-grid">
                 <div class="result-card">
                     <div class="result-label">Fee Fijo</div>
-                    <div class="result-value">$1.85M</div>
+                    <div class="result-value" id="fixed-fee">$1.85M</div>
                 </div>
                 <div class="result-card">
                     <div class="result-label">% Comisión</div>
-                    <div class="result-value" id="commission-percent">4.0%</div>
+                    <div class="result-value" id="commission-percent">3.0%</div>
                 </div>
                 <div class="result-card">
                     <div class="result-label">Comisión</div>
-                    <div class="result-value" id="commission-amount">$1.2M</div>
+                    <div class="result-value" id="commission-amount">$900K</div>
                 </div>
                 <div class="result-card">
                     <div class="result-label">Total Mensual</div>
-                    <div class="result-value" id="total-monthly">$3.05M</div>
+                    <div class="result-value" id="total-monthly">$2.75M</div>
                 </div>
             </div>
 
             <div class="commission-breakdown">
                 <h3 class="breakdown-title">Desglose de Comisión</h3>
-                <div class="breakdown-item">
-                    <span>Servicio Principal (Desarrollo Web)</span>
-                    <span>3.0%</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>+ Pauta Digital</span>
-                    <span>+0.5%</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>+ Mensajería Masiva</span>
-                    <span>+0.5%</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>TOTAL</span>
-                    <span>4.0%</span>
+                <div id="breakdown-content">
+                    <!-- Se llena dinámicamente -->
                 </div>
             </div>
+
+            <button class="download-pdf-btn" onclick="downloadCalculatorPDF()">
+                📥 Descargar Cotización en PDF
+            </button>
         </div>
 
         <div class="section fade-in">
-            <h2 class="section-title">Simulación de Escenarios</h2>
+            <h2 class="section-title">Simulación de Escenarios 📊</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <strong>¿Cuánto pagarías en diferentes escenarios de facturación?</strong><br>
+                Esta tabla te muestra ejemplos reales basados en los servicios que seleccionaste arriba. 
+                Nota cómo el total crece gradualmente con tus ventas - esto significa que <strong>solo pagas más cuando estás vendiendo más</strong>.
+            </p>
             <div class="pricing-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Facturación Mensual</th>
-                            <th>Fee Fijo</th>
-                            <th>Comisión (4%)</th>
-                            <th>Total Mensual</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>$15,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$600,000</td>
-                            <td>$2,450,000</td>
-                        </tr>
-                        <tr>
-                            <td>$20,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$800,000</td>
-                            <td>$2,650,000</td>
-                        </tr>
-                        <tr>
-                            <td>$30,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$1,200,000</td>
-                            <td>$3,050,000</td>
-                        </tr>
-                        <tr>
-                            <td>$40,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$1,600,000</td>
-                            <td>$3,450,000</td>
-                        </tr>
-                        <tr>
-                            <td>$50,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$2,000,000</td>
-                            <td>$3,850,000</td>
-                        </tr>
-                        <tr>
-                            <td>$60,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$2,400,000</td>
-                            <td>$4,250,000</td>
-                        </tr>
-                        <tr>
-                            <td>$80,000,000</td>
-                            <td>$1,850,000</td>
-                            <td>$3,200,000</td>
-                            <td>$5,050,000</td>
-                        </tr>
-                    </tbody>
+                <table id="scenarios-table">
+                    <!-- Se llena dinámicamente -->
                 </table>
-            </div>
-        </div>
-
-        <div class="section fade-in">
-            <h2 class="section-title">Inversión de Palma Travel</h2>
-            <div class="investment-section">
-                <h3>Costos Mensuales Fijos:</h3>
-                <div style="display: grid; gap: 1.25rem;">
-                    <div class="investment-item">
-                        <span>Fees a Altotrafico</span>
-                        <strong>$1,850,000</strong>
-                    </div>
-                    <div class="investment-item">
-                        <span>Presupuesto de pauta (mínimo sugerido)</span>
-                        <strong>$2,000,000</strong>
-                    </div>
-                    <div class="investment-item">
-                        <span>Servicios de terceros (email/WhatsApp)</span>
-                        <strong>$350,000</strong>
-                    </div>
-                    <div class="investment-total">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span>SUBTOTAL FIJO</span>
-                            <strong>$4,200,000/mes</strong>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="investment-highlight">
-                    <h4>+ Comisión Variable</h4>
-                    <p style="font-size: 1.15rem; color: #666; margin-bottom: 1.5rem;">
-                        4.0% sobre ventas brutas mensuales
-                    </p>
-                    
-                    <div class="investment-example">
-                        <strong>Ejemplo con $30,000,000 de facturación mensual:</strong>
-                        <div style="margin-top: 1rem; line-height: 2;">
-                            <div>• Inversión fija: $4,200,000</div>
-                            <div>• Comisión (4%): $1,200,000</div>
-                            <div class="investment-example-total">
-                                TOTAL: $5,400,000/mes
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1030,6 +1598,15 @@
             <div class="cta-final">
                 CRECEMOS JUNTOS 🚀
             </div>
+            
+            <div class="cta-buttons" style="margin-top: 3rem;">
+                <a href="https://wa.me/573045248141?text=Hola!%20Quiero%20agendar%20una%20reunión%20para%20discutir%20la%20propuesta" class="btn btn-whatsapp" target="_blank">
+                    📱 Contactar por WhatsApp
+                </a>
+                <button class="btn btn-primary" onclick="downloadMainPDF()">
+                    📄 Descargar Propuesta Completa
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1037,14 +1614,23 @@
         <img src="images/logo.png" alt="Altotrafico" class="footer-logo">
         <p class="footer-highlight">ALTOTRAFICO</p>
         <p style="color: var(--color-azul);">Agencia de Servicios Digitales | Enero 2026</p>
+        <p style="margin-top: 1rem;">📱 WhatsApp: <a href="https://wa.me/573045248141" style="color: var(--color-amarillo); text-decoration: none;">+57 304 524 8141</a></p>
     </div>
 
     <script>
-        // Calculadora interactiva
-        const slider = document.getElementById('revenue-slider');
-        const revenueDisplay = document.getElementById('revenue-display');
-        const commissionAmount = document.getElementById('commission-amount');
-        const totalMonthly = document.getElementById('total-monthly');
+        // Estado de servicios seleccionados
+        let selectedServices = {
+            dev: true,
+            pauta: false,
+            msg: false
+        };
+
+        // Precios de servicios
+        const servicePrices = {
+            dev: 750000,
+            pauta: 650000,
+            msg: 450000
+        };
 
         function formatCurrency(amount) {
             return '$' + (amount / 1000000).toFixed(2) + 'M';
@@ -1055,25 +1641,292 @@
         }
 
         function updateCalculator() {
-            const revenue = parseInt(slider.value);
-            const fixedFee = 1850000;
-            const commissionRate = 0.04;
-            const commission = revenue * commissionRate;
+            // Obtener servicios seleccionados
+            selectedServices.dev = document.getElementById('service-dev').checked;
+            selectedServices.pauta = document.getElementById('service-pauta').checked;
+            selectedServices.msg = document.getElementById('service-msg').checked;
+
+            // Actualizar clases visuales
+            document.getElementById('checkbox-dev').classList.toggle('selected', selectedServices.dev);
+            document.getElementById('checkbox-pauta').classList.toggle('selected', selectedServices.pauta);
+            document.getElementById('checkbox-msg').classList.toggle('selected', selectedServices.msg);
+
+            // Calcular fee fijo
+            let fixedFee = 0;
+            if (selectedServices.dev) fixedFee += servicePrices.dev;
+            if (selectedServices.pauta) fixedFee += servicePrices.pauta;
+            if (selectedServices.msg) fixedFee += servicePrices.msg;
+
+            // Calcular comisión variable
+            let commissionRate = 0;
+            let servicesCount = 0;
+            let firstService = null;
+            
+            // Determinar el primer servicio seleccionado
+            if (selectedServices.dev) {
+                if (!firstService) { firstService = 'dev'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+            if (selectedServices.pauta) {
+                if (!firstService) { firstService = 'pauta'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+            if (selectedServices.msg) {
+                if (!firstService) { firstService = 'msg'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+
+            const revenue = parseInt(document.getElementById('revenue-slider').value);
+            const commission = revenue * (commissionRate / 100);
             const total = fixedFee + commission;
 
-            revenueDisplay.textContent = formatLargeCurrency(revenue);
-            commissionAmount.textContent = formatCurrency(commission);
-            totalMonthly.textContent = formatCurrency(total);
+            // Actualizar display
+            document.getElementById('revenue-display').textContent = formatLargeCurrency(revenue);
+            document.getElementById('fixed-fee').textContent = formatCurrency(fixedFee);
+            document.getElementById('commission-percent').textContent = commissionRate.toFixed(1) + '%';
+            document.getElementById('commission-amount').textContent = formatCurrency(commission);
+            document.getElementById('total-monthly').textContent = formatCurrency(total);
+
+            // Actualizar desglose
+            updateBreakdown(commissionRate);
+
+            // Actualizar tabla de escenarios
+            updateScenariosTable();
         }
 
-        slider.addEventListener('input', updateCalculator);
-        
-        // Smooth scroll
-        function smoothScroll() {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
+        function updateBreakdown(commissionRate) {
+            const breakdownContent = document.getElementById('breakdown-content');
+            let html = '';
+            
+            // Determinar el primer servicio seleccionado
+            let firstService = null;
+            if (selectedServices.dev) firstService = firstService || 'dev';
+            if (selectedServices.pauta) firstService = firstService || 'pauta';
+            if (selectedServices.msg) firstService = firstService || 'msg';
+
+            // Desarrollo Web
+            if (selectedServices.dev) {
+                const isFirst = firstService === 'dev';
+                html += `
+                    <div class="breakdown-item">
+                        <span>${isFirst ? 'Servicio Principal' : '+'} Desarrollo Web</span>
+                        <span>${isFirst ? '3.0%' : '+0.5%'}</span>
+                    </div>
+                `;
+            }
+
+            // Pauta Digital
+            if (selectedServices.pauta) {
+                const isFirst = firstService === 'pauta';
+                html += `
+                    <div class="breakdown-item">
+                        <span>${isFirst ? 'Servicio Principal' : '+'} Pauta Digital</span>
+                        <span>${isFirst ? '3.0%' : '+0.5%'}</span>
+                    </div>
+                `;
+            }
+
+            // Mensajería Masiva
+            if (selectedServices.msg) {
+                const isFirst = firstService === 'msg';
+                html += `
+                    <div class="breakdown-item">
+                        <span>${isFirst ? 'Servicio Principal' : '+'} Mensajería Masiva</span>
+                        <span>${isFirst ? '3.0%' : '+0.5%'}</span>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="breakdown-item">
+                    <span>TOTAL</span>
+                    <span>${commissionRate.toFixed(1)}%</span>
+                </div>
+            `;
+
+            breakdownContent.innerHTML = html;
+        }
+
+        function updateScenariosTable() {
+            const scenarios = [15, 20, 30, 40, 50, 60, 80];
+            let fixedFee = 0;
+            if (selectedServices.dev) fixedFee += servicePrices.dev;
+            if (selectedServices.pauta) fixedFee += servicePrices.pauta;
+            if (selectedServices.msg) fixedFee += servicePrices.msg;
+
+            // Calcular comisión usando la misma lógica
+            let commissionRate = 0;
+            let servicesCount = 0;
+            let firstService = null;
+            
+            if (selectedServices.dev) {
+                if (!firstService) { firstService = 'dev'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+            if (selectedServices.pauta) {
+                if (!firstService) { firstService = 'pauta'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+            if (selectedServices.msg) {
+                if (!firstService) { firstService = 'msg'; commissionRate = 3; } 
+                else { commissionRate += 0.5; }
+                servicesCount++;
+            }
+
+            let html = `
+                <thead>
+                    <tr>
+                        <th>Facturación Mensual</th>
+                        <th>Fee Fijo</th>
+                        <th>Comisión (${commissionRate.toFixed(1)}%)</th>
+                        <th>Total Mensual</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            scenarios.forEach(amount => {
+                const revenue = amount * 1000000;
+                const commission = revenue * (commissionRate / 100);
+                const total = fixedFee + commission;
+
+                html += `
+                    <tr>
+                        <td>${formatLargeCurrency(revenue)}</td>
+                        <td>${formatLargeCurrency(fixedFee)}</td>
+                        <td>${formatLargeCurrency(commission)}</td>
+                        <td>${formatLargeCurrency(total)}</td>
+                    </tr>
+                `;
             });
+
+            html += '</tbody>';
+            document.getElementById('scenarios-table').innerHTML = html;
+        }
+
+        function downloadMainPDF() {
+            alert('Generando PDF de la propuesta completa...\n\nEsta funcionalidad requiere integración con un generador de PDF más robusto. Por ahora, puedes usar Ctrl+P para imprimir como PDF.');
+        }
+
+        function downloadCalculatorPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Título
+            doc.setFontSize(20);
+            doc.setTextColor(24, 55, 56);
+            doc.text('COTIZACIÓN PALMA TRAVEL', 105, 20, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Altotrafico - Agencia Digital', 105, 28, { align: 'center' });
+
+            // Línea separadora
+            doc.setDrawColor(216, 218, 0);
+            doc.setLineWidth(1);
+            doc.line(20, 35, 190, 35);
+
+            // Servicios seleccionados
+            doc.setFontSize(14);
+            doc.setTextColor(24, 55, 56);
+            doc.text('Servicios Contratados:', 20, 50);
+
+            let y = 60;
+            doc.setFontSize(11);
+            doc.setTextColor(50, 50, 50);
+
+            if (selectedServices.dev) {
+                doc.text('✓ Desarrollo y Admin Web: $750,000/mes', 25, y);
+                y += 8;
+            }
+            if (selectedServices.pauta) {
+                doc.text('✓ Pauta Digital: $650,000/mes', 25, y);
+                y += 8;
+            }
+            if (selectedServices.msg) {
+                doc.text('✓ Mensajería Masiva: $450,000/mes', 25, y);
+                y += 8;
+            }
+
+            // Facturación
+            y += 10;
+            const revenue = parseInt(document.getElementById('revenue-slider').value);
+            doc.setFontSize(12);
+            doc.setTextColor(24, 55, 56);
+            doc.text('Facturación Mensual Estimada:', 20, y);
+            doc.setTextColor(216, 218, 0);
+            doc.text(formatLargeCurrency(revenue), 120, y);
+
+            // Cálculos
+            y += 15;
+            doc.setFontSize(14);
+            doc.setTextColor(24, 55, 56);
+            doc.text('Resumen Financiero:', 20, y);
+
+            y += 12;
+            doc.setFontSize(11);
+            doc.setTextColor(50, 50, 50);
+
+            const fixedFee = document.getElementById('fixed-fee').textContent;
+            const commissionPercent = document.getElementById('commission-percent').textContent;
+            const commissionAmount = document.getElementById('commission-amount').textContent;
+            const totalMonthly = document.getElementById('total-monthly').textContent;
+
+            doc.text('Fee Fijo Mensual:', 25, y);
+            doc.text(fixedFee, 120, y);
+            y += 8;
+
+            doc.text('Comisión sobre ventas (' + commissionPercent + '):', 25, y);
+            doc.text(commissionAmount, 120, y);
+            y += 8;
+
+            doc.setLineWidth(0.5);
+            doc.line(25, y, 190, y);
+            y += 8;
+
+            doc.setFontSize(13);
+            doc.setTextColor(216, 218, 0);
+            doc.text('TOTAL MENSUAL:', 25, y);
+            doc.text(totalMonthly, 120, y);
+
+            // Footer
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Propuesta válida por 30 días | WhatsApp: +57 304 524 8141', 105, 280, { align: 'center' });
+            doc.text('www.altotrafico.co', 105, 285, { align: 'center' });
+
+            // Descargar
+            doc.save('Cotizacion_PalmaTravel_Altotrafico.pdf');
+        }
+
+        function smoothScroll(event, target) {
+            event.preventDefault();
+            const element = typeof target === 'string' ? document.querySelector(target) : target;
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        function toggleDetail(button) {
+            const content = button.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Toggle el contenido
+            if (isActive) {
+                content.classList.remove('active');
+                button.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                button.classList.add('active');
+            }
         }
 
         // Intersection Observer para animaciones
@@ -1103,6 +1956,9 @@
                 hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
             }
         });
+
+        // Inicializar
+        updateCalculator();
     </script>
 </body>
 </html>
