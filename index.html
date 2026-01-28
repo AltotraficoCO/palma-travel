@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propuesta Palma Travel - Altotrafico</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -40,7 +42,28 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #1a3e3f 0%, #0f2b2c 50%, #0a1f20 100%);
+            background: #000000;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.75) 100%);
+            z-index: 1;
         }
 
         .hero::before {
@@ -79,7 +102,74 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            text-align: left;
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-benefit-box {
+            background: rgba(224, 219, 200, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(162, 193, 196, 0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-benefit-box:hover {
+            background: rgba(224, 219, 200, 0.25);
+            border-color: var(--color-azul);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(162, 193, 196, 0.3);
+        }
+
+        .hero-benefit-box h3 {
+            color: var(--color-beige);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-benefit-box p {
+            color: rgba(224, 219, 200, 0.9);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hero-benefit-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+
+        .hero-benefit-box li {
+            color: rgba(224, 219, 200, 0.9);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .hero-benefit-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-azul);
+            font-weight: bold;
         }
 
         .logo {
@@ -959,6 +1049,16 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-left {
+                text-align: center;
+            }
         }
 
         .fade-in {
@@ -1161,24 +1261,53 @@
 </head>
 <body>
     <div class="hero">
+        <!-- Video de fondo gratuito de Pexels -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://cdn.pixabay.com/video/2022/11/09/138448-769654512_large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
-            <img src="images/logo.png" alt="Altotrafico Logo" class="logo">
-            <h1>PROPUESTA COMERCIAL</h1>
-            <div class="subtitle">Partnership Estratégico</div>
-            <div class="client">PALMA TRAVEL</div>
-            
-            <div class="cta-buttons">
-                <a href="https://wa.me/573045248141?text=Hola!%20Me%20interesa%20la%20propuesta%20de%20Altotrafico" class="btn btn-whatsapp" target="_blank">
-                    📱 WhatsApp
-                </a>
-                <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
-                    📦 Ver Planes
-                </a>
-                <button class="btn btn-secondary" onclick="downloadMainPDF()">
-                    📄 Descargar PDF
-                </button>
+            <!-- Columna Izquierda -->
+            <div class="hero-left">
+                <img src="images/logo.png" alt="Altotrafico Logo" class="logo">
+                <h1>PROPUESTA COMERCIAL</h1>
+                <div class="subtitle">Partnership Estratégico</div>
+                <div class="client">PALMA TRAVEL</div>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/573045248141?text=Hola!%20Me%20interesa%20la%20propuesta%20de%20Altotrafico" class="btn btn-whatsapp" target="_blank">
+                        📱 WhatsApp
+                    </a>
+                    <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
+                        📦 Ver Propuesta
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="hero-right">
+                <div class="hero-benefit-box">
+                    <h3>💰 Inversión Compartida</h3>
+                    <p>No pagas tarifas altas de agencia tradicional. Crecemos juntos con un modelo basado en resultados.</p>
+                </div>
+
+                <div class="hero-benefit-box">
+                    <h3>🚀 Todo lo que Necesitas</h3>
+                    <ul>
+                        <li>Socio Tecnológico + SaaS</li>
+                        <li>Pauta Digital (Google + Meta)</li>
+                        <li>Mensajería Masiva Automatizada</li>
+                    </ul>
+                </div>
+
+                <div class="hero-benefit-box">
+                    <h3>📈 17 Años de Experiencia</h3>
+                    <p>Más de 150 proyectos entregados y $3M+ USD en pauta gestionada con éxito comprobado.</p>
+                </div>
             </div>
         </div>
+
         <div class="scroll-indicator" onclick="smoothScroll(event, '.container')">
             <svg width="40" height="40" viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5z"/>
@@ -1244,15 +1373,15 @@
             </p>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="images/dev-person.jpg" alt="Desarrollo Web" class="service-icon">
-                    <h3>🌐 Desarrollo y Admin Web</h3>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Socio Tecnológico" class="service-icon">
+                    <h3>🚀 Socio Tecnológico</h3>
                     <div class="service-price">$750,000<span>/mes</span></div>
                     <ul class="service-features">
-                        <li>Mantenimiento del sitio actual</li>
-                        <li>Mejoras y optimizaciones continuas</li>
+                        <li>Partner estratégico de desarrollo</li>
+                        <li>Mantenimiento y evolución del sitio</li>
                         <li>Desarrollo progresivo del SaaS</li>
-                        <li>Hosting y dominio gestionado</li>
-                        <li>Soporte técnico dedicado</li>
+                        <li>Infraestructura y hosting gestionado</li>
+                        <li>Soporte técnico prioritario</li>
                     </ul>
                     
                     <div class="service-details">
@@ -1262,12 +1391,13 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="check-icon">✓</span> <span>Actualizaciones de contenido ilimitadas</span></li>
+                                <li><span class="check-icon">✓</span> <span>Partner estratégico de tecnología a largo plazo</span></li>
+                                <li><span class="check-icon">✓</span> <span>Desarrollo y evolución continua del sitio web</span></li>
                                 <li><span class="check-icon">✓</span> <span>Optimización SEO técnico y de velocidad</span></li>
-                                <li><span class="check-icon">✓</span> <span>Certificado SSL y seguridad web</span></li>
-                                <li><span class="check-icon">✓</span> <span>Copias de seguridad semanales automáticas</span></li>
-                                <li><span class="check-icon">✓</span> <span>Desarrollo de nuevas funcionalidades del SaaS</span></li>
-                                <li><span class="check-icon">✓</span> <span>Integración con sistemas de pago</span></li>
+                                <li><span class="check-icon">✓</span> <span>Certificado SSL y seguridad web avanzada</span></li>
+                                <li><span class="check-icon">✓</span> <span>Copias de seguridad automáticas y recuperación</span></li>
+                                <li><span class="check-icon">✓</span> <span>Desarrollo progresivo de plataforma SaaS</span></li>
+                                <li><span class="check-icon">✓</span> <span>Integración con sistemas de pago y APIs</span></li>
                                 <li><span class="check-icon">✓</span> <span>Dashboard administrativo personalizado</span></li>
                                 <li><span class="check-icon">✓</span> <span>Soporte técnico prioritario 5 días/semana</span></li>
                             </ul>
@@ -1295,7 +1425,7 @@
                 </div>
 
                 <div class="service-card">
-                    <img src="images/pauta-person.jpg" alt="Pauta Digital" class="service-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3227/3227042.png" alt="Pauta Digital" class="service-icon">
                     <h3>📱 Pauta Digital</h3>
                     <div class="service-price">$650,000<span>/mes</span></div>
                     <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-style: italic;">
@@ -1352,7 +1482,7 @@
                 </div>
 
                 <div class="service-card">
-                    <img src="images/msg-person.jpg" alt="Mensajería Masiva" class="service-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3024/3024593.png" alt="Mensajería Masiva" class="service-icon">
                     <h3>💬 Mensajería Masiva</h3>
                     <div class="service-price">$450,000<span>/mes</span></div>
                     <ul class="service-features">
@@ -1415,35 +1545,35 @@
             
             <div class="logos-grid">
                 <div class="logo-item">
-                    <img src="https://upequipmentusa.com/wp-content/uploads/2023/06/cropped-UP-EQUIPMENT-USA-LOGO-VECTOR.png" alt="UP Equipment USA">
+                    <img src="images/up-equipment-logo.png" alt="UP Equipment USA">
                     <h4>UP Equipment USA</h4>
                     <p>Maquinaria Pesada</p>
                     <a href="https://upequipmentusa.com/" target="_blank">upequipmentusa.com →</a>
                 </div>
                 
                 <div class="logo-item">
-                    <img src="https://www.solucioneslegales.net.co/wp-content/uploads/2024/01/logo-soluciones-legales-negro.svg" alt="Soluciones Legales">
+                    <img src="images/soluciones-legales-logo.png" alt="Soluciones Legales">
                     <h4>Soluciones Legales</h4>
                     <p>Servicios Jurídicos</p>
                     <a href="https://www.solucioneslegales.net.co/" target="_blank">solucioneslegales.net.co →</a>
                 </div>
                 
                 <div class="logo-item">
-                    <img src="https://coros.com.co/wp-content/uploads/2024/08/Copia-de-Diseno-sin-titulo-46.png" alt="COROS Colombia">
+                    <img src="images/coros-logo.png" alt="COROS Colombia">
                     <h4>COROS Colombia</h4>
                     <p>Relojes Deportivos</p>
                     <a href="https://coros.com.co/" target="_blank">coros.com.co →</a>
                 </div>
                 
                 <div class="logo-item">
-                    <img src="https://s3.amazonaws.com/alegra.com/styles/v2/logo_header_v2.svg" alt="Alegra">
+                    <img src="images/alegra-logo.svg" alt="Alegra">
                     <h4>Alegra</h4>
                     <p>Software Contable</p>
                     <a href="https://app.alegra.com/" target="_blank">alegra.com →</a>
                 </div>
                 
                 <div class="logo-item">
-                    <img src="https://gruasyequipos.net/wp-content/uploads/2024/06/Logo_Mesa-de-trabajo-1-1024x388.png" alt="Grúas y Equipos">
+                    <img src="images/gruas-equipos-logo.png" alt="Grúas y Equipos">
                     <h4>Grúas y Equipos</h4>
                     <p>Maquinaria Industrial</p>
                     <a href="https://gruasyequipos.net/" target="_blank">gruasyequipos.net →</a>
@@ -1492,7 +1622,7 @@
                 <label class="service-checkbox" id="checkbox-dev">
                     <input type="checkbox" id="service-dev" onchange="updateCalculator()" checked>
                     <div class="service-checkbox-content">
-                        <div class="service-checkbox-title">🌐 Desarrollo y Admin Web</div>
+                        <div class="service-checkbox-title">🚀 Socio Tecnológico</div>
                         <div class="service-checkbox-price">$750,000/mes</div>
                         <div class="service-checkbox-commission">Primer servicio: 3% | Adicional: +0.5%</div>
                     </div>
@@ -1603,9 +1733,9 @@
                 <a href="https://wa.me/573045248141?text=Hola!%20Quiero%20agendar%20una%20reunión%20para%20discutir%20la%20propuesta" class="btn btn-whatsapp" target="_blank">
                     📱 Contactar por WhatsApp
                 </a>
-                <button class="btn btn-primary" onclick="downloadMainPDF()">
-                    📄 Descargar Propuesta Completa
-                </button>
+                <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
+                    📦 Ver Servicios Nuevamente
+                </a>
             </div>
         </div>
     </div>
@@ -1712,7 +1842,7 @@
                 const isFirst = firstService === 'dev';
                 html += `
                     <div class="breakdown-item">
-                        <span>${isFirst ? 'Servicio Principal' : '+'} Desarrollo Web</span>
+                        <span>${isFirst ? 'Servicio Principal' : '+'} Socio Tecnológico</span>
                         <span>${isFirst ? '3.0%' : '+0.5%'}</span>
                     </div>
                 `;
@@ -1809,10 +1939,6 @@
             document.getElementById('scenarios-table').innerHTML = html;
         }
 
-        function downloadMainPDF() {
-            alert('Generando PDF de la propuesta completa...\n\nEsta funcionalidad requiere integración con un generador de PDF más robusto. Por ahora, puedes usar Ctrl+P para imprimir como PDF.');
-        }
-
         function downloadCalculatorPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -1841,7 +1967,7 @@
             doc.setTextColor(50, 50, 50);
 
             if (selectedServices.dev) {
-                doc.text('✓ Desarrollo y Admin Web: $750,000/mes', 25, y);
+                doc.text('✓ Socio Tecnológico: $750,000/mes', 25, y);
                 y += 8;
             }
             if (selectedServices.pauta) {
