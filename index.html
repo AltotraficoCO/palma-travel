@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
             z-index: 1;
         }
 
@@ -95,8 +96,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-            50% { transform: translateY(-40px) translateX(40px) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(40px) scale(1.1);
+            }
         }
 
         .hero-content {
@@ -187,7 +195,7 @@
             margin-bottom: 1rem;
             line-height: 1.1;
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero .subtitle {
@@ -195,7 +203,7 @@
             color: var(--color-amarillo);
             margin-bottom: 1rem;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .hero .client {
@@ -238,7 +246,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
             letter-spacing: 0.3px;
@@ -251,7 +259,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
 
@@ -312,6 +320,7 @@
                 opacity: 0;
                 transform: translateY(40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -323,6 +332,7 @@
                 opacity: 0;
                 transform: translateY(-40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -340,9 +350,22 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-15px); }
-            60% { transform: translateX(-50%) translateY(-8px); }
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-8px);
+            }
         }
 
         .scroll-indicator svg {
@@ -361,7 +384,7 @@
             border-radius: 30px;
             padding: 4rem 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 30px 90px rgba(0,0,0,0.15);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.15);
             animation: fadeInUp 0.8s ease-out;
             position: relative;
             overflow: hidden;
@@ -441,7 +464,7 @@
             box-shadow: 0 30px 60px rgba(216, 218, 0, 0.25);
         }
 
-        .service-card > * {
+        .service-card>* {
             position: relative;
             z-index: 1;
         }
@@ -454,7 +477,7 @@
             object-fit: cover;
             margin-bottom: 1.5rem;
             border: 3px solid var(--color-amarillo);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .service-card h3 {
@@ -637,7 +660,7 @@
             right: -200px;
         }
 
-        .calculator > * {
+        .calculator>* {
             position: relative;
             z-index: 1;
         }
@@ -658,18 +681,18 @@
         }
 
         .services-selector {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 2.5rem;
             margin-bottom: 3rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .service-checkbox {
             display: flex;
             align-items: center;
             padding: 1.5rem;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             margin-bottom: 1.5rem;
             cursor: pointer;
@@ -678,7 +701,7 @@
         }
 
         .service-checkbox:hover {
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
             transform: translateX(10px);
         }
 
@@ -734,7 +757,7 @@
             width: 100%;
             height: 12px;
             border-radius: 6px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             outline: none;
             -webkit-appearance: none;
             backdrop-filter: blur(10px);
@@ -775,18 +798,18 @@
         }
 
         .result-card {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 2rem 1.5rem;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         .result-card:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
             box-shadow: 0 15px 40px rgba(216, 218, 0, 0.2);
         }
 
@@ -807,11 +830,11 @@
         }
 
         .commission-breakdown {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 2rem;
             margin-top: 3rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .breakdown-title {
@@ -825,7 +848,7 @@
             display: flex;
             justify-content: space-between;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             font-size: 1.05rem;
         }
 
@@ -866,7 +889,7 @@
             overflow-x: auto;
             margin-top: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
         }
 
         table {
@@ -875,7 +898,8 @@
             background: white;
         }
 
-        th, td {
+        th,
+        td {
             padding: 1.5rem 1.25rem;
             text-align: left;
             border-bottom: 1px solid #eee;
@@ -930,7 +954,7 @@
             transform: translate(-50%, -50%);
         }
 
-        .cta-section > * {
+        .cta-section>* {
             position: relative;
             z-index: 1;
         }
@@ -993,7 +1017,7 @@
             border-radius: 20px;
             margin: 3rem auto;
             display: block;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .footer {
@@ -1153,7 +1177,7 @@
             border-radius: 30px;
             padding: 4rem 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 30px 90px rgba(0,0,0,0.15);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.15);
         }
 
         .success-cases h2 {
@@ -1194,7 +1218,7 @@
 
         .logo-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: var(--color-amarillo);
         }
 
@@ -1258,13 +1282,281 @@
             font-size: 1rem;
             color: var(--color-beige);
         }
+
+        /* Chat Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-amarillo), #e6ec00);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(216, 218, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 30px rgba(216, 218, 0, 0.6);
+        }
+
+        .chat-toggle svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-principal);
+            z-index: 2;
+        }
+
+        .chat-toggle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+        }
+
+        .chat-toggle:active::before {
+            opacity: 1;
+            transform: scale(1);
+            transition: 0s;
+        }
+
+        .chat-window {
+            width: 350px;
+            height: 500px;
+            background: rgba(24, 55, 56, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom right;
+        }
+
+        .chat-window.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .chat-header {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-amarillo), var(--color-azul));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .chat-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border: 2px solid var(--color-principal);
+            border-radius: 50%;
+        }
+
+        .chat-info h3 {
+            color: var(--color-beige);
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .chat-info p {
+            color: rgba(224, 219, 200, 0.7);
+            font-size: 0.8rem;
+            margin: 0.2rem 0 0 0;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-beige);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user {
+            background: var(--color-amarillo);
+            color: var(--color-principal);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            font-weight: 500;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-amarillo);
+        }
+
+        .chat-send {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--color-amarillo);
+            border: none;
+            color: var(--color-principal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(216, 218, 0, 0.3);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            align-self: flex-start;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-beige);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="hero">
         <!-- Video de fondo gratuito de Pexels -->
+        <!-- Video Background -->
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/video/2022/11/09/138448-769654512_large.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/5803099/5803099-hd_1920_1080_25fps.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
 
@@ -1275,9 +1567,10 @@
                 <h1>PROPUESTA COMERCIAL</h1>
                 <div class="subtitle">Partnership Estratégico</div>
                 <div class="client">PALMA TRAVEL</div>
-                
+
                 <div class="cta-buttons">
-                    <a href="https://wa.me/573045248141?text=Hola!%20Me%20interesa%20la%20propuesta%20de%20Altotrafico" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/573045248141?text=Hola!%20Me%20interesa%20la%20propuesta%20de%20Altotrafico"
+                        class="btn btn-whatsapp" target="_blank">
                         📱 WhatsApp
                     </a>
                     <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
@@ -1290,7 +1583,8 @@
             <div class="hero-right">
                 <div class="hero-benefit-box">
                     <h3>💰 Inversión Compartida</h3>
-                    <p>No pagas tarifas altas de agencia tradicional. Crecemos juntos con un modelo basado en resultados.</p>
+                    <p>No pagas tarifas altas de agencia tradicional. Crecemos juntos con un modelo basado en
+                        resultados.</p>
                 </div>
 
                 <div class="hero-benefit-box">
@@ -1311,7 +1605,7 @@
 
         <div class="scroll-indicator" onclick="smoothScroll(event, '.container')">
             <svg width="40" height="40" viewBox="0 0 24 24">
-                <path d="M7 10l5 5 5-5z"/>
+                <path d="M7 10l5 5 5-5z" />
             </svg>
         </div>
     </div>
@@ -1320,17 +1614,18 @@
         <div class="intro-section fade-in">
             <h2>¿Cómo Funciona Este Partnership? 🤝</h2>
             <p>
-                Esta propuesta está diseñada para que Palma Travel y Altotrafico crezcan juntos. 
-                <strong>No es un gasto, es una inversión compartida</strong> donde ambos ganamos cuando tu negocio crece.
+                Esta propuesta está diseñada para que Palma Travel y Altotrafico crezcan juntos.
+                <strong>No es un gasto, es una inversión compartida</strong> donde ambos ganamos cuando tu negocio
+                crece.
             </p>
-            
+
             <div class="intro-highlight">
                 <h3>📊 Modelo de Inversión Compartida</h3>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
-                    En lugar de cobrar tarifas altas fijas, invertimos tiempo y recursos en tu éxito. 
+                    En lugar de cobrar tarifas altas fijas, invertimos tiempo y recursos en tu éxito.
                     <strong>Mientras más vendas, más ganamos ambos.</strong>
                 </p>
-                
+
                 <div class="intro-bullets">
                     <div class="intro-bullet">
                         <div class="intro-bullet-icon">💰</div>
@@ -1339,7 +1634,7 @@
                             <p>Cubrimos costos operativos básicos con un fee fijo accesible por servicio</p>
                         </div>
                     </div>
-                    
+
                     <div class="intro-bullet">
                         <div class="intro-bullet-icon">📈</div>
                         <div class="intro-bullet-text">
@@ -1347,7 +1642,7 @@
                             <p>Solo ganamos más cuando TÚ vendes más - alineamos nuestros incentivos</p>
                         </div>
                     </div>
-                    
+
                     <div class="intro-bullet">
                         <div class="intro-bullet-icon">🎯</div>
                         <div class="intro-bullet-text">
@@ -1355,7 +1650,7 @@
                             <p>No pagas tarifas de agencia tradicional (que pueden ser $3M-$5M/mes)</p>
                         </div>
                     </div>
-                    
+
                     <div class="intro-bullet">
                         <div class="intro-bullet-icon">🚀</div>
                         <div class="intro-bullet-text">
@@ -1369,8 +1664,11 @@
 
         <div class="section fade-in" id="servicios">
             <h2 class="section-title">Servicios Disponibles</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Selecciona los servicios que necesitas. <strong>El primer servicio tiene una comisión del 3%</strong> y cada servicio adicional agrega solo 0.5% más. Puedes contratar uno, dos o los tres según tus necesidades.
+            <p
+                style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Selecciona los servicios que necesitas. <strong>El primer servicio tiene una comisión del 3%</strong> y
+                cada servicio adicional agrega solo 0.5% más. Puedes contratar uno, dos o los tres según tus
+                necesidades.
             </p>
             <div class="services-grid">
                 <div class="service-card">
@@ -1384,7 +1682,7 @@
                         <li>Infraestructura y hosting gestionado</li>
                         <li>Soporte técnico prioritario</li>
                     </ul>
-                    
+
                     <div class="service-details">
                         <button class="detail-toggle" onclick="toggleDetail(this)">
                             <span>✓ Qué incluye</span>
@@ -1392,15 +1690,24 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="check-icon">✓</span> <span>Partner estratégico de tecnología a largo plazo</span></li>
-                                <li><span class="check-icon">✓</span> <span>Desarrollo y evolución continua del sitio web</span></li>
-                                <li><span class="check-icon">✓</span> <span>Optimización SEO técnico y de velocidad</span></li>
-                                <li><span class="check-icon">✓</span> <span>Certificado SSL y seguridad web avanzada</span></li>
-                                <li><span class="check-icon">✓</span> <span>Copias de seguridad automáticas y recuperación</span></li>
-                                <li><span class="check-icon">✓</span> <span>Desarrollo progresivo de plataforma SaaS</span></li>
-                                <li><span class="check-icon">✓</span> <span>Integración con sistemas de pago y APIs</span></li>
-                                <li><span class="check-icon">✓</span> <span>Dashboard administrativo personalizado</span></li>
-                                <li><span class="check-icon">✓</span> <span>Soporte técnico prioritario 5 días/semana</span></li>
+                                <li><span class="check-icon">✓</span> <span>Partner estratégico de tecnología a largo
+                                        plazo</span></li>
+                                <li><span class="check-icon">✓</span> <span>Desarrollo y evolución continua del sitio
+                                        web</span></li>
+                                <li><span class="check-icon">✓</span> <span>Optimización SEO técnico y de
+                                        velocidad</span></li>
+                                <li><span class="check-icon">✓</span> <span>Certificado SSL y seguridad web
+                                        avanzada</span></li>
+                                <li><span class="check-icon">✓</span> <span>Copias de seguridad automáticas y
+                                        recuperación</span></li>
+                                <li><span class="check-icon">✓</span> <span>Desarrollo progresivo de plataforma
+                                        SaaS</span></li>
+                                <li><span class="check-icon">✓</span> <span>Integración con sistemas de pago y
+                                        APIs</span></li>
+                                <li><span class="check-icon">✓</span> <span>Dashboard administrativo
+                                        personalizado</span></li>
+                                <li><span class="check-icon">✓</span> <span>Soporte técnico prioritario 5
+                                        días/semana</span></li>
                             </ul>
                         </div>
 
@@ -1410,12 +1717,17 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="cross-icon">✗</span> <span>Rediseño completo del sitio web (cotización aparte)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Producción de fotografía o video profesional</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido (textos, blogs)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Rediseño completo del sitio web (cotización
+                                        aparte)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Producción de fotografía o video
+                                        profesional</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido (textos,
+                                        blogs)</span></li>
                                 <li><span class="cross-icon">✗</span> <span>Gestión de redes sociales</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Apps móviles nativas (iOS/Android)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Servicios de email o WhatsApp API</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Apps móviles nativas (iOS/Android)</span>
+                                </li>
+                                <li><span class="cross-icon">✗</span> <span>Servicios de email o WhatsApp API</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -1447,14 +1759,21 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="check-icon">✓</span> <span>Gestión completa de Google Ads y Meta Ads</span></li>
-                                <li><span class="check-icon">✓</span> <span>Investigación de palabras clave y audiencias</span></li>
-                                <li><span class="check-icon">✓</span> <span>8-10 creatividades (imágenes/videos cortos) por mes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Gestión completa de Google Ads y Meta
+                                        Ads</span></li>
+                                <li><span class="check-icon">✓</span> <span>Investigación de palabras clave y
+                                        audiencias</span></li>
+                                <li><span class="check-icon">✓</span> <span>8-10 creatividades (imágenes/videos cortos)
+                                        por mes</span></li>
                                 <li><span class="check-icon">✓</span> <span>Optimización semanal de campañas</span></li>
-                                <li><span class="check-icon">✓</span> <span>A/B testing de anuncios y audiencias</span></li>
-                                <li><span class="check-icon">✓</span> <span>Reportes mensuales con análisis detallado</span></li>
-                                <li><span class="check-icon">✓</span> <span>Configuración de píxeles y conversiones</span></li>
-                                <li><span class="check-icon">✓</span> <span>Estrategia y planificación mensual</span></li>
+                                <li><span class="check-icon">✓</span> <span>A/B testing de anuncios y audiencias</span>
+                                </li>
+                                <li><span class="check-icon">✓</span> <span>Reportes mensuales con análisis
+                                        detallado</span></li>
+                                <li><span class="check-icon">✓</span> <span>Configuración de píxeles y
+                                        conversiones</span></li>
+                                <li><span class="check-icon">✓</span> <span>Estrategia y planificación mensual</span>
+                                </li>
                             </ul>
                         </div>
 
@@ -1464,12 +1783,18 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="cross-icon">✗</span> <span>Presupuesto de pauta (mínimo sugerido: $650,000/mes)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Producción profesional de video (sobre 30 segundos)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Sesiones fotográficas profesionales</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Community management de redes sociales</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Pauta en TikTok Ads (cotización aparte)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Influencer marketing o partnerships</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Presupuesto de pauta (mínimo sugerido:
+                                        $650,000/mes)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Producción profesional de video (sobre 30
+                                        segundos)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Sesiones fotográficas profesionales</span>
+                                </li>
+                                <li><span class="cross-icon">✗</span> <span>Community management de redes
+                                        sociales</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Pauta en TikTok Ads (cotización
+                                        aparte)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Influencer marketing o partnerships</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -1501,14 +1826,21 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="check-icon">✓</span> <span>Configuración de WhatsApp Business API</span></li>
-                                <li><span class="check-icon">✓</span> <span>Configuración de plataforma de email marketing</span></li>
-                                <li><span class="check-icon">✓</span> <span>Hasta 5,000 mensajes combinados por mes</span></li>
-                                <li><span class="check-icon">✓</span> <span>Automatizaciones de seguimiento post-reserva</span></li>
-                                <li><span class="check-icon">✓</span> <span>Recordatorios automáticos de viajes</span></li>
-                                <li><span class="check-icon">✓</span> <span>Campañas promocionales segmentadas</span></li>
+                                <li><span class="check-icon">✓</span> <span>Configuración de WhatsApp Business
+                                        API</span></li>
+                                <li><span class="check-icon">✓</span> <span>Configuración de plataforma de email
+                                        marketing</span></li>
+                                <li><span class="check-icon">✓</span> <span>Hasta 5,000 mensajes combinados por
+                                        mes</span></li>
+                                <li><span class="check-icon">✓</span> <span>Automatizaciones de seguimiento
+                                        post-reserva</span></li>
+                                <li><span class="check-icon">✓</span> <span>Recordatorios automáticos de viajes</span>
+                                </li>
+                                <li><span class="check-icon">✓</span> <span>Campañas promocionales segmentadas</span>
+                                </li>
                                 <li><span class="check-icon">✓</span> <span>Diseño de plantillas de mensajes</span></li>
-                                <li><span class="check-icon">✓</span> <span>Reportes de entregas y engagement</span></li>
+                                <li><span class="check-icon">✓</span> <span>Reportes de entregas y engagement</span>
+                                </li>
                             </ul>
                         </div>
 
@@ -1518,12 +1850,18 @@
                         </button>
                         <div class="detail-content">
                             <ul>
-                                <li><span class="cross-icon">✗</span> <span>Costos de servicios de terceros (~$350,000/mes para email y WhatsApp)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Mensajes adicionales sobre el límite de 5,000</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Atención al cliente 24/7 por WhatsApp</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Chatbot con inteligencia artificial conversacional</span></li>
-                                <li><span class="cross-icon">✗</span> <span>SMS masivos (solo email y WhatsApp)</span></li>
-                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido para campañas</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Costos de servicios de terceros
+                                        (~$350,000/mes para email y WhatsApp)</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Mensajes adicionales sobre el límite de
+                                        5,000</span></li>
+                                <li><span class="cross-icon">✗</span> <span>Atención al cliente 24/7 por WhatsApp</span>
+                                </li>
+                                <li><span class="cross-icon">✗</span> <span>Chatbot con inteligencia artificial
+                                        conversacional</span></li>
+                                <li><span class="cross-icon">✗</span> <span>SMS masivos (solo email y WhatsApp)</span>
+                                </li>
+                                <li><span class="cross-icon">✗</span> <span>Redacción de contenido para campañas</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -1543,7 +1881,7 @@
             <p class="success-cases-subtitle">
                 Empresas que confían en Altotrafico para su transformación digital
             </p>
-            
+
             <div class="logos-grid">
                 <div class="logo-item">
                     <img src="images/up-equipment-logo.png" alt="UP Equipment USA">
@@ -1551,28 +1889,28 @@
                     <p>Maquinaria Pesada</p>
                     <a href="https://upequipmentusa.com/" target="_blank">upequipmentusa.com →</a>
                 </div>
-                
+
                 <div class="logo-item">
                     <img src="images/soluciones-legales-logo.png" alt="Soluciones Legales">
                     <h4>Soluciones Legales</h4>
                     <p>Servicios Jurídicos</p>
                     <a href="https://www.solucioneslegales.net.co/" target="_blank">solucioneslegales.net.co →</a>
                 </div>
-                
+
                 <div class="logo-item">
                     <img src="images/coros-logo.png" alt="COROS Colombia">
                     <h4>COROS Colombia</h4>
                     <p>Relojes Deportivos</p>
                     <a href="https://coros.com.co/" target="_blank">coros.com.co →</a>
                 </div>
-                
+
                 <div class="logo-item">
                     <img src="images/alegra-logo.svg" alt="Alegra">
                     <h4>Alegra</h4>
                     <p>Software Contable</p>
                     <a href="https://app.alegra.com/" target="_blank">alegra.com →</a>
                 </div>
-                
+
                 <div class="logo-item">
                     <img src="images/gruas-equipos-logo.png" alt="Grúas y Equipos">
                     <h4>Grúas y Equipos</h4>
@@ -1606,7 +1944,8 @@
             <p class="calculator-subtitle">
                 Selecciona los servicios que necesitas y ajusta tu facturación mensual estimada para ver cuánto pagarías
             </p>
-            <p class="calculator-subtitle" style="margin-top: 1rem; font-size: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--color-amarillo);">
+            <p class="calculator-subtitle"
+                style="margin-top: 1rem; font-size: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--color-amarillo);">
                 <strong>💡 Cómo leer los resultados:</strong><br>
                 • <strong>Fee Fijo</strong> = Lo que pagas mensualmente por cada servicio<br>
                 • <strong>Comisión</strong> = Porcentaje sobre tus ventas mensuales<br>
@@ -1614,12 +1953,14 @@
             </p>
 
             <div class="services-selector">
-                <h3 style="color: var(--color-amarillo); margin-bottom: 1rem; font-size: 1.5rem;">Selecciona tus servicios:</h3>
+                <h3 style="color: var(--color-amarillo); margin-bottom: 1rem; font-size: 1.5rem;">Selecciona tus
+                    servicios:</h3>
                 <p style="color: var(--color-beige); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
-                    ℹ️ <strong>El primer servicio que selecciones</strong> tendrá una comisión del 3% sobre tus ventas.<br>
+                    ℹ️ <strong>El primer servicio que selecciones</strong> tendrá una comisión del 3% sobre tus
+                    ventas.<br>
                     Cada servicio adicional solo agrega 0.5% más. Ejemplo: 2 servicios = 3.5% total.
                 </p>
-                
+
                 <label class="service-checkbox" id="checkbox-dev">
                     <input type="checkbox" id="service-dev" onchange="updateCalculator()" checked>
                     <div class="service-checkbox-content">
@@ -1651,9 +1992,11 @@
             <div class="slider-container">
                 <div class="slider-label">
                     <span>Facturación mensual de Palma Travel:</span>
-                    <span id="revenue-display" style="color: var(--color-amarillo); font-weight: 800;">$30,000,000</span>
+                    <span id="revenue-display"
+                        style="color: var(--color-amarillo); font-weight: 800;">$30,000,000</span>
                 </div>
-                <input type="range" min="10000000" max="100000000" value="30000000" step="5000000" class="slider" id="revenue-slider" oninput="updateCalculator()">
+                <input type="range" min="10000000" max="100000000" value="30000000" step="5000000" class="slider"
+                    id="revenue-slider" oninput="updateCalculator()">
             </div>
 
             <div class="results-grid">
@@ -1689,10 +2032,12 @@
 
         <div class="section fade-in">
             <h2 class="section-title">Simulación de Escenarios 📊</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <p
+                style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
                 <strong>¿Cuánto pagarías en diferentes escenarios de facturación?</strong><br>
-                Esta tabla te muestra ejemplos reales basados en los servicios que seleccionaste arriba. 
-                Nota cómo el total crece gradualmente con tus ventas - esto significa que <strong>solo pagas más cuando estás vendiendo más</strong>.
+                Esta tabla te muestra ejemplos reales basados en los servicios que seleccionaste arriba.
+                Nota cómo el total crece gradualmente con tus ventas - esto significa que <strong>solo pagas más cuando
+                    estás vendiendo más</strong>.
             </p>
             <div class="pricing-table">
                 <table id="scenarios-table">
@@ -1729,9 +2074,10 @@
             <div class="cta-final">
                 CRECEMOS JUNTOS 🚀
             </div>
-            
+
             <div class="cta-buttons" style="margin-top: 3rem;">
-                <a href="https://wa.me/573045248141?text=Hola!%20Quiero%20agendar%20una%20reunión%20para%20discutir%20la%20propuesta" class="btn btn-whatsapp" target="_blank">
+                <a href="https://wa.me/573045248141?text=Hola!%20Quiero%20agendar%20una%20reunión%20para%20discutir%20la%20propuesta"
+                    class="btn btn-whatsapp" target="_blank">
                     📱 Contactar por WhatsApp
                 </a>
                 <a href="#servicios" class="btn btn-primary" onclick="smoothScroll(event, '#servicios')">
@@ -1745,7 +2091,8 @@
         <img src="images/logo.png" alt="Altotrafico" class="footer-logo">
         <p class="footer-highlight">ALTOTRAFICO</p>
         <p style="color: var(--color-azul);">Agencia de Servicios Digitales | Enero 2026</p>
-        <p style="margin-top: 1rem;">📱 WhatsApp: <a href="https://wa.me/573045248141" style="color: var(--color-amarillo); text-decoration: none;">+57 304 524 8141</a></p>
+        <p style="margin-top: 1rem;">📱 WhatsApp: <a href="https://wa.me/573045248141"
+                style="color: var(--color-amarillo); text-decoration: none;">+57 304 524 8141</a></p>
     </div>
 
     <script>
@@ -1792,20 +2139,20 @@
             let commissionRate = 0;
             let servicesCount = 0;
             let firstService = null;
-            
+
             // Determinar el primer servicio seleccionado
             if (selectedServices.dev) {
-                if (!firstService) { firstService = 'dev'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'dev'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
             if (selectedServices.pauta) {
-                if (!firstService) { firstService = 'pauta'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'pauta'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
             if (selectedServices.msg) {
-                if (!firstService) { firstService = 'msg'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'msg'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
@@ -1831,7 +2178,7 @@
         function updateBreakdown(commissionRate) {
             const breakdownContent = document.getElementById('breakdown-content');
             let html = '';
-            
+
             // Determinar el primer servicio seleccionado
             let firstService = null;
             if (selectedServices.dev) firstService = firstService || 'dev';
@@ -1892,19 +2239,19 @@
             let commissionRate = 0;
             let servicesCount = 0;
             let firstService = null;
-            
+
             if (selectedServices.dev) {
-                if (!firstService) { firstService = 'dev'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'dev'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
             if (selectedServices.pauta) {
-                if (!firstService) { firstService = 'pauta'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'pauta'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
             if (selectedServices.msg) {
-                if (!firstService) { firstService = 'msg'; commissionRate = 3; } 
+                if (!firstService) { firstService = 'msg'; commissionRate = 3; }
                 else { commissionRate += 0.5; }
                 servicesCount++;
             }
@@ -2045,7 +2392,7 @@
         function toggleDetail(button) {
             const content = button.nextElementSibling;
             const isActive = content.classList.contains('active');
-            
+
             // Toggle el contenido
             if (isActive) {
                 content.classList.remove('active');
@@ -2087,5 +2434,118 @@
         // Inicializar
         updateCalculator();
     </script>
+    <!-- Chat Widget HTML -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-info">
+                    <h3>Palma AI</h3>
+                    <p>Asistente Virtual Inteligente</p>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    Hola! 👋 Soy el asistente IA de Palma Travel. ¿En qué puedo ayudarte hoy con tu estrategia digital?
+                </div>
+                <!-- Messages will be added here -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..."
+                    onkeypress="handleEnter(event)">
+                <button class="chat-send" onclick="sendMessage()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <button class="chat-toggle" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Chat Widget Logic -->
+    <script>
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            chatWindow.classList.toggle('active');
+            if (isChatOpen) {
+                setTimeout(() => chatInput.focus(), 300);
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // Add user message
+            addMessage(text, 'user');
+            chatInput.value = '';
+
+            // Simulate AI response
+            showTyping();
+
+            // Simple keyword-based logic for demo
+            setTimeout(() => {
+                let response = "¡Gracias por tu mensaje! Un asesor humano revisará tu consulta para darte una respuesta detallada.";
+
+                const lowerText = text.toLowerCase();
+                if (lowerText.includes('precio') || lowerText.includes('costo') || lowerText.includes('valor')) {
+                    response = "Nuestros precios se basan en un modelo de inversión compartida. Puedes ver el desglose detallado en la sección de 'Servicios' más arriba.";
+                } else if (lowerText.includes('contacto') || lowerText.includes('whatsapp')) {
+                    response = "Puedes contactarnos directamente por WhatsApp usando el botón verde en la parte superior, o al número +57 304 524 8141.";
+                } else if (lowerText.includes('servicios') || lowerText.includes('que hacen')) {
+                    response = "Ofrecemos 3 servicios principales: Socio Tecnológico, Pauta Digital y Mensajería Masiva. ¿Te gustaría saber más de alguno en específico?";
+                } else if (lowerText.includes('hola') || lowerText.includes('buenas')) {
+                    response = "¡Hola! ¿Cómo estás? ¿Listo para escalar Palma Travel al siguiente nivel?";
+                }
+
+                hideTyping();
+                addMessage(response, 'bot');
+            }, 1500);
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.textContent = text;
+            chatMessages.insertBefore(div, typingIndicator);
+            scrollToBottom();
+        }
+
+        function showTyping() {
+            typingIndicator.style.display = 'flex';
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            typingIndicator.style.display = 'none';
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
 </body>
+
 </html>
